@@ -4,24 +4,28 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './user/user.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
+import { MenuModule } from './menu/menu.module';
+import { AddressModule } from './address/address.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({isGlobal: true}),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '127.0.0.1',
+      host: 'postgres',
       port: 5432,
       username: 'postgres',
       password: 'fadin123',
-      database: 'db',
+      database: 'docker-db',
       url: process.env.DATABASE_URL,
       autoLoadEntities: true,
       synchronize: true,
-
-
     }),
-    UserModule
+    UserModule,
+    RestaurantsModule,
+    MenuModule,
+    AddressModule
   ],
   controllers: [AppController],
   providers: [AppService],
