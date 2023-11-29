@@ -1,4 +1,4 @@
-import { IsObject, IsOptional, IsString, MinLength, ValidateNested } from "class-validator";
+import { IsObject, IsOptional, IsString, IsUUID, MinLength, ValidateNested } from "class-validator";
 import { CreateAddressDto } from "src/address/dto/create-address.dto";
 
 export class CreateRestaurantDto {
@@ -14,11 +14,28 @@ export class CreateRestaurantDto {
     
     @IsString()
     @MinLength(4)
-    aboutus: string;
+    about_us: string;
     
     @IsObject()
     @ValidateNested()
     address: CreateAddressDto;
 }
+
+export class RestaurantParamById {
+
+    @IsUUID()
+    id: string;
+}
+
+export class RestaurantMenuParamById {
+
+    @IsUUID()
+    id: string;
+
+    @IsUUID()
+    menuId: string;
+}
+
+
 
 
