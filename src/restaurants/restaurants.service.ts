@@ -33,7 +33,7 @@ export class RestaurantsService {
   }
 
   async findAll(): Promise<Restaurant[]> {
-    return await this.restaurantRepo.find();
+    return await this.restaurantRepo.find({ relations:['address','restaurant_menu']});
   }
 
   async findOne(id: string): Promise<Restaurant | undefined> {

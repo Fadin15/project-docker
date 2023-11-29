@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, NotFoundException } 
 import { RestaurantsService } from './restaurants.service';
 import { CreateRestaurantDto, RestaurantParamById } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Restaurants')
 @Controller('restaurants')
 export class RestaurantsController {
   constructor(private readonly restaurantsService: RestaurantsService) {}
